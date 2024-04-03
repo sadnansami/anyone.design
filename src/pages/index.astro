@@ -1,0 +1,64 @@
+---
+import * as cheerio from "cheerio";
+import fs from "node:fs/promises"
+import { Theme } from '@radix-ui/themes'
+import "@radix-ui/themes/styles.css"
+import Menu from "../components/Menu"
+
+const BASEURL = Astro.url + "api"
+
+let file = await fs.readFile("sites/project1/home.html", "utf8")
+const ch = cheerio.load(file)
+
+/*
+let response = await fetch(`ch{BASEURL}/user.json`)
+response = await response.json()
+
+console.log(response)
+*/
+
+
+//console.log(file)
+---
+<script>
+import $, { css } from "jquery"
+console.log("hello")
+
+let cursorX, cursorY, currentElement
+const cssClasses = "inner-border-2 inner-border-blue-500"
+
+window.onload = function() {
+	console.log("hello")
+	$("#file").children()
+		.on("mouseenter", function(e) {
+			$(this).addClass(cssClasses)
+		}).on("mouseleave", function(e) {
+			$(this).removeClass(cssClasses)
+		}).on("click", function(e) {
+			$("#file").children().not(this).removeClass(cssClasses)
+			$(this)
+				.addClass(cssClasses)
+				.off("mouseleave")
+		})
+}
+</script>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<Theme>
+			<h1>Astro</h1>
+			<!-- {Astro.url + "api"*/}
+			<Menu /> -->
+			<div class="container mx-auto border-black border-4 h-96">
+				<div id="file" set:html={ch.html()}></div>
+			</div>
+		</Theme>
+	</body>
+</html>
