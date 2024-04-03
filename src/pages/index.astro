@@ -21,7 +21,7 @@ console.log(response)
 //console.log(file)
 ---
 <script>
-import $, { css } from "jquery"
+import $ from "jquery"
 console.log("hello")
 
 let cursorX, cursorY, currentElement
@@ -57,7 +57,7 @@ window.onload = function() {
 			<!-- {Astro.url + "api"*/}
 			<Menu /> -->
 			<div class="container mx-auto border-black border-4 h-96">
-				<div id="file" set:html={ch.html()}></div>
+				<div id="file" set:html={ ch.html() }></div>
 			</div>
 		</Theme>
 	</body>
