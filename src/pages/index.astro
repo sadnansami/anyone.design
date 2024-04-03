@@ -24,21 +24,22 @@ console.log(response)
 import $ from "jquery"
 console.log("hello")
 
-let cursorX, cursorY, currentElement
+let cursorX, cursorY, currentElement: JQuery<HTMLElement>
 const cssClasses = "inner-border-2 inner-border-blue-500"
 
 window.onload = function() {
-	console.log("hello")
 	$("#file").children()
 		.on("mouseenter", function(e) {
 			$(this).addClass(cssClasses)
 		}).on("mouseleave", function(e) {
-			$(this).removeClass(cssClasses)
+			if(!$(this).is(currentElement)) {
+				$(this).removeClass(cssClasses)
+			}
 		}).on("click", function(e) {
-			$("#file").children().not(this).removeClass(cssClasses)
-			$(this)
-				.addClass(cssClasses)
-				.off("mouseleave")
+			currentElement = $(this)
+			console.log(currentElement)
+			$("#file").children().not($(this)).removeClass(cssClasses)
+			$(this).addClass(cssClasses)
 		})
 }
 </script>
