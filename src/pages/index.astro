@@ -1,7 +1,8 @@
 ---
 import * as cheerio from "cheerio";
 import fs from "node:fs/promises"
-import { Theme } from '@radix-ui/themes'
+import { TextField, Theme } from "@radix-ui/themes"
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 import "@radix-ui/themes/styles.css"
 import Menu from "../components/Menu"
 
@@ -9,6 +10,7 @@ const BASEURL = Astro.url + "api"
 
 let file = await fs.readFile("sites/project1/home.html", "utf8")
 const ch = cheerio.load(file)
+let currentElement = "nothing"
 
 /*
 let response = await fetch(`ch{BASEURL}/user.json`)
@@ -20,11 +22,11 @@ console.log(response)
 
 //console.log(file)
 ---
-<script>
+<script define:vars={currentElement}>
 import $ from "jquery"
 console.log("hello")
 
-let cursorX, cursorY, currentElement: JQuery<HTMLElement>
+let cursorX, cursorY
 const cssClasses = "inner-border-2 inner-border-blue-500"
 
 window.onload = function() {
@@ -59,6 +61,15 @@ window.onload = function() {
 			<Menu /> -->
 			<div class="container mx-auto border-black border-4 h-96">
 				<div id="file" set:html={ ch.html() }></div>
+			</div>
+
+			<div class="w-1/2 h-fit mx-auto mt-4">
+				
+				<TextField.Root placeholder={ currentElement } client:visible>
+					<TextField.Slot>
+						<MagnifyingGlassIcon width="16" height="16" />
+					</TextField.Slot>
+				</TextField.Root>
 			</div>
 		</Theme>
 	</body>
