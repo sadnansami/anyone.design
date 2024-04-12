@@ -15,6 +15,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vue": "^4.0.10",
     "@nanostores/react": "^0.7.2",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
