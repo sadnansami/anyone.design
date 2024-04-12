@@ -1,16 +1,11 @@
 ---
-import * as cheerio from "cheerio";
-import fs from "node:fs/promises"
-import { TextField, Theme } from "@radix-ui/themes"
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
-import "@radix-ui/themes/styles.css"
+import "@/app/globals.css"
 import Menu from "../components/Menu"
+//import Site from "../components/Site.astro"
+import Site from "../components/Site.vue";
+
 
 const BASEURL = Astro.url + "api"
-
-let file = await fs.readFile("sites/project1/home.html", "utf8")
-const ch = cheerio.load(file)
-let currentElement = "nothing"
 
 /*
 let response = await fetch(`ch{BASEURL}/user.json`)
@@ -18,33 +13,7 @@ response = await response.json()
 
 console.log(response)
 */
-
-
-//console.log(file)
 ---
-<script define:vars={currentElement}>
-import $ from "jquery"
-console.log("hello")
-
-let cursorX, cursorY
-const cssClasses = "inner-border-2 inner-border-blue-500"
-
-window.onload = function() {
-	$("#file").children()
-		.on("mouseenter", function(e) {
-			$(this).addClass(cssClasses)
-		}).on("mouseleave", function(e) {
-			if(!$(this).is(currentElement)) {
-				$(this).removeClass(cssClasses)
-			}
-		}).on("click", function(e) {
-			currentElement = $(this)
-			console.log(currentElement)
-			$("#file").children().not($(this)).removeClass(cssClasses)
-			$(this).addClass(cssClasses)
-		})
-}
-</script>
 
 <html lang="en">
 	<head>
@@ -55,22 +24,17 @@ window.onload = function() {
 		<title>Astro</title>
 	</head>
 	<body>
-		<Theme>
-			<h1>Astro</h1>
-			<!-- {Astro.url + "api"*/}
-			<Menu /> -->
-			<div class="container mx-auto border-black border-4 h-96">
-				<div id="file" set:html={ ch.html() }></div>
-			</div>
-
-			<div class="w-1/2 h-fit mx-auto mt-4">
-				
-				<TextField.Root placeholder={ currentElement } client:visible>
-					<TextField.Slot>
-						<MagnifyingGlassIcon width="16" height="16" />
-					</TextField.Slot>
-				</TextField.Root>
-			</div>
-		</Theme>
+		<h1>Astro</h1>
+		<!-- {Astro.url + "api"*/}
+		<Menu /> -->
+		<div class="container mx-auto border-black border-4 h-96">
+			<Site client:load />
+			<div class="w-24 h-24 bg-black"></div>
+		</div>
+		<div class="w-1/2 h-fit mx-auto mt-4">
+			<!-- Alternative Vue component version. DO NOT USE BOTH AT THE SAME TIME. IT WILL CAUSE CONFUSING BUGS.
+			<SiteVue client:load /> -->
+			<Menu client:load />
+		</div>
 	</body>
 </html>
