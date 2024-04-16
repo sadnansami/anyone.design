@@ -1,12 +1,18 @@
 ---
-import * as cheerio from "cheerio";
+import * as cheerio from "cheerio"
+import fs from "node:fs"
+import { Button } from "./ui/button"
 
 const fileHandler: string = 
 	cheerio.load(
-		await Bun
-			.file("sites/project1/home.html")
-			.text()
-	).html()
+		fs.readFileSync("sites/project1/home.html")
+	)
+	.html()
+
+const fileSaveHandler = (e: any) => {
+	e.preventDefault
+	console.log("hello")
+}
 
 ---
 <script>
@@ -16,16 +22,17 @@ const fileHandler: string =
 	const cssClasses = "inner-border-2 inner-border-blue-500"
 	let currentElement: JQuery<HTMLElement>
 
+	const hoverFunction = (e: JQuery.Event) => {
+		if(!$(e).is(currentElement)) {
+			$(e).toggleClass(cssClasses)
+		}
+	}
+
 	window.onload = function() {
 		$("#file").children()
-			.on("mouseenter", function(e) {
-				$(this).addClass(cssClasses)
-			}).on("mouseleave", function(e) {
-				if(!$(this).is(currentElement)) {
-					$(this).removeClass(cssClasses)
-				}
-			}).on("click", function(e) {
-
+			.on("mouseenter", hoverFunction)
+			.on("mouseleave", hoverFunction)
+			.on("click", function(e) {
 				currentElement = $(this)
 				currentElementAtom.set($(this).prop("outerHTML"))
 				
@@ -40,3 +47,6 @@ const fileHandler: string =
 </script>
 
 <div id="file" set:html={fileHandler}></div>
+<Button variant="destructive" onClick={(e) => fileSaveHandler(e)} client:load >Save File</Button>
+
+

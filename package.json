@@ -3,22 +3,20 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "bunx --bun astro dev",
-    "start": "bunx --bun astro dev",
-    "build": "bunx --bun astro check && astro build",
-    "preview": "bunx --bun astro preview",
-    "astro": "bunx --bun astro"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.10",
-    "@astrojs/svelte": "^5.3.0",
+    "@astrojs/react": "^3.3.0",
     "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/vue": "^4.0.10",
+    "@astrojs/vue": "^4.1.0",
     "@nanostores/react": "^0.7.2",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-slot": "^1.0.2",
-    "@types/react": "^18.2.64",
-    "@types/react-dom": "^18.2.21",
     "astro": "^4.5.12",
     "cheerio": "1.0.0-rc.12",
     "class-variance-authority": "^0.7.0",
@@ -27,6 +25,7 @@
     "jquery": "^3.7.1",
     "knex": "^3.1.0",
     "lucide-react": "^0.368.0",
+    "motion": "^10.17.0",
     "nanostores": "^0.10.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -34,12 +33,14 @@
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^3.4.3",
     "tailwindcss-animate": "^1.0.7",
-    "tailwindcss-inner-border": "^0.2.0",
     "typescript": "^5.4.3",
     "vue": "^3.4.21"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.12",
-    "@types/jquery": "^3.5.29"
+    "@types/jquery": "^3.5.29",
+    "@types/node": "^20.12.7",
+    "@types/react": "^18.2.78",
+    "@types/react-dom": "^18.2.25",
+    "tailwindcss-inner-border": "^0.2.0"
   }
 }

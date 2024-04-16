@@ -1,11 +1,18 @@
 ---
 import "@/styles/globals.css"
 import Menu from "@/components/Menu"
-//import Site from "../components/Site.astro"
-import Site from "@/components/Site.vue";
+import Site from "../components/Site.astro"
+//import Site from "@/components/Site.vue";
 import { ModeToggle } from "@/components/ModeToggle"
 import { Button } from "@/components/ui/button"
-
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 
 const BASEURL = Astro.url + "api"
@@ -46,16 +53,16 @@ console.log(response)
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
 		<!-- {Astro.url + "api"*/}
 		<Menu /> -->
-		<div class="container mx-auto border-black border-4 h-96">
-			<Site client:load />
+		<div class="min-w-screen min-h-screen">
+			<Site />
 			<div class="w-24 h-24 bg-black"></div>
 		</div>
+
 		<div class="w-1/2 h-fit mx-auto mt-4">
 			<ModeToggle client:load />
-			<Button variant="destructive">Hi</Button>
+			<Button variant="secondary" client:load>Hi</Button>
 			<!-- Alternative Vue component version. DO NOT USE BOTH AT THE SAME TIME. IT WILL CAUSE CONFUSING BUGS.
 			<SiteVue client:load /> -->
 			<Menu client:load />
