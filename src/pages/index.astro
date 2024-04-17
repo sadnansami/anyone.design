@@ -5,16 +5,7 @@ import Site from "../components/Site.astro"
 //import Site from "@/components/Site.vue";
 import { ModeToggle } from "@/components/ModeToggle"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-
-
+import { EditBar } from "@/components/EditBar"
 const BASEURL = Astro.url + "api"
 
 /*
@@ -59,13 +50,17 @@ console.log(response)
 			<Site />
 			<div class="w-24 h-24 bg-black"></div>
 		</div>
-
-		<div class="w-1/2 h-fit mx-auto mt-4">
+		<div class="h-24 w-24 light:bg-red-500">
+			k
+		</div>
+		<EditBar client:load />	
+		<aside class="bg-background text-foreground dark">
+			
 			<ModeToggle client:load />
 			<Button variant="secondary" client:load>Hi</Button>
 			<!-- Alternative Vue component version. DO NOT USE BOTH AT THE SAME TIME. IT WILL CAUSE CONFUSING BUGS.
 			<SiteVue client:load /> -->
 			<Menu client:load />
-		</div>
+		</aside>
 	</body>
 </html>

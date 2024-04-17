@@ -24,7 +24,6 @@ export function ModeToggle() {
       theme === "dark" ||
       (theme === "system" &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
-    console.log("isDark variable is", isDark)
     document.documentElement.classList[isDark ? "add" : "remove"]("dark")
   }, [theme])
  

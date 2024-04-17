@@ -22,16 +22,16 @@ const fileSaveHandler = (e: any) => {
 	const cssClasses = "inner-border-2 inner-border-blue-500"
 	let currentElement: JQuery<HTMLElement>
 
-	const hoverFunction = (e: JQuery.Event) => {
-		if(!$(e).is(currentElement)) {
-			$(e).toggleClass(cssClasses)
+	const hoverHandler = (e: JQuery.TriggeredEvent) => {
+		if(!$(e.target).is($(currentElement))) {
+			$(e.target).toggleClass(cssClasses)
 		}
 	}
 
 	window.onload = function() {
 		$("#file").children()
-			.on("mouseenter", hoverFunction)
-			.on("mouseleave", hoverFunction)
+			.on("mouseenter", hoverHandler)
+			.on("mouseleave", hoverHandler)
 			.on("click", function(e) {
 				currentElement = $(this)
 				currentElementAtom.set($(this).prop("outerHTML"))
