@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # Customer Sites
 sites/
+
+#VS Code specific files
+.vscode/
