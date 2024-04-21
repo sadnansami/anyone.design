@@ -20,8 +20,5 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-# Customer Sites
-sites/
-
 #VS Code specific files
 .vscode/
