@@ -8,7 +8,7 @@ export default defineConfig({
   output: "server",
   integrations: [
     tailwind({
-      applyBaseStyles: false,
+      applyBaseStyles: false
     }),
     react(),
     vue()

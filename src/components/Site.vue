@@ -3,7 +3,7 @@
 	import * as cheerio from "cheerio";
 	import fs from "node:fs"
 	import $ from "jquery"
-	import { currentElementAtom } from "../state/currentElement"
+	import { currentElementAtom } from "@/lib/state"
 	
 	let fileHandler: Ref<string>;
 	onServerPrefetch(async () => {
@@ -50,4 +50,4 @@
 
 <template>
 	<div id="file" v-html="fileHandler"></div>
-</template>
+</template>../state/state

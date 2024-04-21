@@ -3,6 +3,10 @@
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "react",
+    "lib": [
+      "es2016",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
       "@/*": [

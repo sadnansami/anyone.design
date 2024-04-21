@@ -17,7 +17,7 @@ const fileSaveHandler = (e: any) => {
 ---
 <script>
 	import $ from "jquery"
-	import { currentElementAtom } from "../state/currentElement"
+	import { currentElementAtom } from "@/lib/state"
 
 	const cssClasses = "inner-border-2 inner-border-blue-500"
 	let currentElement: JQuery<HTMLElement>
@@ -34,7 +34,7 @@ const fileSaveHandler = (e: any) => {
 			.on("mouseleave", hoverHandler)
 			.on("click", function(e) {
 				currentElement = $(this)
-				currentElementAtom.set($(this).prop("outerHTML"))
+				currentElementAtom.set(this)
 				
 				$("#file")
 					.children()

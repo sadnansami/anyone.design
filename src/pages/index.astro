@@ -1,11 +1,12 @@
 ---
 import "@/styles/globals.css"
-import Menu from "@/components/Menu"
 import Site from "../components/Site.astro"
 //import Site from "@/components/Site.vue";
 import { ModeToggle } from "@/components/ModeToggle"
 import { Button } from "@/components/ui/button"
 import { EditBar } from "@/components/EditBar"
+import { PopoverInput } from "@/components/PopoverInput"
+
 const BASEURL = Astro.url + "api"
 
 /*
@@ -50,17 +51,18 @@ console.log(response)
 			<Site />
 			<div class="w-24 h-24 bg-black"></div>
 		</div>
+		<PopoverInput client:load />
+
 		<div class="h-24 w-24 light:bg-red-500">
 			k
 		</div>
-		<EditBar client:load />	
+		<EditBar client:only="react" />	
 		<aside class="bg-background text-foreground dark">
-			
+
 			<ModeToggle client:load />
 			<Button variant="secondary" client:load>Hi</Button>
 			<!-- Alternative Vue component version. DO NOT USE BOTH AT THE SAME TIME. IT WILL CAUSE CONFUSING BUGS.
 			<SiteVue client:load /> -->
-			<Menu client:load />
 		</aside>
 	</body>
 </html>

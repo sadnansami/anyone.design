@@ -1,6 +1,6 @@
 
 import { useStore } from "@nanostores/react"
-import { currentElementAtom } from "../state/currentElement"
+import { currentElementAtom } from "../lib/state"
 import { useEffect } from "react"
 import $ from "jquery"
 
