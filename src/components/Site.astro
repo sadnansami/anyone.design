@@ -1,13 +1,11 @@
 ---
-import * as cheerio from "cheerio"
-import fs from "node:fs"
 import { Button } from "./ui/button"
 
-const fileHandler: string = 
-	cheerio.load(
-		fs.readFileSync("sites/project1/home.html")
-	)
-	.html()
+const BASEURL = Astro.url + "api"
+
+const fetchFile = await (
+	await fetch(`${BASEURL}/fetch/index.html`)
+).text()
 
 const fileSaveHandler = (e: any) => {
 	e.preventDefault
@@ -46,7 +44,7 @@ const fileSaveHandler = (e: any) => {
 	}
 </script>
 
-<div id="file" set:html={fileHandler}></div>
+<div id="file" set:html={fetchFile}></div>
 <Button variant="destructive" onClick={(e) => fileSaveHandler(e)} client:load >Save File</Button>
 
 

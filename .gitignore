@@ -23,5 +23,8 @@ pnpm-debug.log*
 # Customer Sites
 sites/
 
-#VS Code specific files
+# VS Code specific files
 .vscode/
+
+# Drizzle Migrations
+drizzle/
